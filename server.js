@@ -5,9 +5,14 @@ require('dotenv').config();
 
 const app = express();
 
-// Middleware
-app.use(cors({ origin: 'http://localhost:5173' })); // React ilovamiz uchun ruxsat
-app.use(express.json());
+app.use(cors({
+  origin: [
+    'https://devsarvar.vercel.app',
+    'http://localhost:5173'
+  ],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 
 // Contact API
 app.post('/api/contact', async (req, res) => {
